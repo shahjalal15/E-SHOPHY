@@ -3,8 +3,12 @@ import Layout from "./../components/Layout/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/ProductDetailsStyles.css";
+import { useCart } from "../context/cart";
+import { useAuth } from "../context/auth";
 
 const ProductDetails = () => {
+  const [cart, setCart] = useCart();
+  const [auth, setAuth] = useAuth();
   const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
@@ -37,6 +41,44 @@ const ProductDetails = () => {
       console.log(error);
     }
   };
+
+  const [review, setReview] = useState("");
+  const [reviews, setReviews] = useState([]);
+
+  const handleReview = async (e) => {
+    e.preventDefault();
+    try {
+      let data = {
+        userId: auth?.user._id,
+        productId: product._id,
+        review: review,
+      };
+
+      await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/product/product-review`,
+        data
+      );
+      setReview("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getReview = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/product/product-review-get/${product?._id}`
+      );
+      setReviews(response.data.reviews);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getReview();
+  }, [product?._id]);
+  console.log(review);
   return (
     <Layout>
       <div className="row container product-details">
@@ -62,7 +104,42 @@ const ProductDetails = () => {
             })}
           </h6>
           <h6>Category : {product?.category?.name}</h6>
-          <button class="btn btn-secondary ms-1">ADD TO CART</button>
+          <button
+            class="btn btn-secondary ms-1"
+            onClick={() => {
+              setCart([...cart, product]);
+              localStorage.setItem("cart", JSON.stringify([...cart, product]));
+            }}
+          >
+            ADD TO CART
+          </button>
+          <div className="review">
+            <form onSubmit={handleReview}>
+              <textarea
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+                placeholder="write a review"
+                name="review"
+                id="review"
+                cols="60"
+                rows="5"
+                className="area"
+              />
+              <br />
+              <button type="submit" className="btn btn-info ms-1">
+                Submit Review
+              </button>
+            </form>
+          </div>
+        </div>
+        <div className="reviews">
+          <h3>Reviews</h3>
+          {reviews?.map((review) => (
+            <div className="review-info">
+              <h6>{review.userId.name.toUpperCase()}</h6>
+              <p>{review.review}</p>
+            </div>
+          ))}
         </div>
       </div>
       <hr />

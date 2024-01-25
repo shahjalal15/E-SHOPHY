@@ -1,39 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /*background-image: url(images/bg.jpg);*/
-  
 }
 /*font-family: 'Playfair Display', serif;
 font-family: 'Poppins', sans-serif;*/
 
 /* //navbar css */
-.navbar{
-  font-family: 'Poppins', sans-serif;
+.navbar {
+  font-family: "Poppins", sans-serif;
   font-size: 17px;
   line-height: 26px;
   text-transform: uppercase;
   box-shadow: 0 8px 6px -6px rgb(226, 121, 191);
-  --webkit-box-shadow:0 8px 6px -6px grey;
+  --webkit-box-shadow: 0 8px 6px -6px grey;
   border-bottom: 0px solid grey important;
 }
-.nav-link{
+.nav-link {
   font-weight: 300 !important;
-
 }
-.active{
+.active {
   border-bottom: 2px solid black;
 }
-.navbar-brand{
+.navbar-brand {
   font-weight: 700;
-  font-family: "roboto",sans-serif;
+  font-family: "roboto", sans-serif;
   letter-spacing: 3px;
 }
 
-.footer{
+.footer {
   color: aliceblue;
   padding: 25px;
   background: #000000; /* fallback for old browsers */
@@ -44,12 +42,12 @@ font-family: 'Poppins', sans-serif;*/
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #434343, #000000);
 }
-.footer a{
+.footer a {
   text-decoration: none;
   color: white;
   padding: 10px;
 }
-.footer a:hover{
+.footer a:hover {
   color: #ffefba;
   border-bottom: 1px solid #ffefba;
 }
@@ -107,65 +105,51 @@ font-family: 'Poppins', sans-serif;*/
 
 /*===========================================
 ================REGISTER====================*/
-.form-container{
+.form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 70vh;
   flex-direction: column;
   background-color: #ffdee9;
-  background-image: linear-gradient(0deg,#ffdee9 0%, #b5fffc 100%);
+  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
 }
-.form-container form{
-  box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+.form-container form {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 20px;
   background-color: #fff;
 }
-.form-container form .title{
+.form-container form .title {
   text-align: center;
   margin-bottom: 15px;
   font-weight: bold;
-  font-family: "Playfair Display",serif;
-
+  font-family: "Playfair Display", serif;
 }
-.form-container form input{
+.form-container form input {
   border: none;
   border-bottom: 1px solid #000;
   border-radius: 0;
 }
-.form-container form button{
+.form-container form button {
   border: 1px solid black;
   border-radius: 0;
   background-color: #000;
-  color:white;
-  width:250px;
-
+  color: white;
+  width: 250px;
 }
-.form-container form button:hover{
+.form-container form button:hover {
   border: 1px solid black;
-  background:#000000;
-  background: -webkit-linear-gradient(
-      to right,
-      #434343,
-      #000000
-  );
-  background: linear-gradient(
-      to right,
-      #434343,
-      #000000
-  );
-
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #434343, #000000);
+  background: linear-gradient(to right, #434343, #000000);
 }
 
 /*=======================================
 ============product js=================*/
-.product-link{
+.product-link {
   text-decoration: none !important;
   color: black !important;
 }
-
-
-
 
 /*=======Homepage=====*/
 .banner-img {
@@ -249,7 +233,6 @@ filters
   font-weight: bold;
   font-size: 20px !important;
 }
-
 
 /*===========cart style=======*/
 .cart-page {
@@ -371,4 +354,36 @@ filters
 
 .similar-products .card-img-top {
   height: 300px !important;
+}
+
+.review {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 50px;
+}
+.area {
+  padding: 10px;
+}
+
+/* .reviews {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-column-gap: 2px;
+  grid-row-gap: 10px;
+  justify-items: stretch;
+  align-items: stretch;
+} */
+
+.review-info {
+  text-align: center;
+  color: black;
+  padding: 5px 0 5px 0;
+  width: 50%;
+  min-height: 50px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 10px gray;
 }

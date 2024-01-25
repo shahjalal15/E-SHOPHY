@@ -1,6 +1,7 @@
 import productModel from "../models/productModel.js";
 import categoryModel from "../models/categoryModel.js";
 import orderModel from "../models/orderModel.js";
+import reviewModel from "../models/reviewModel.js";
 
 import fs from "fs";
 import slugify from "slugify";
@@ -226,6 +227,48 @@ export const productCountController = async (req, res) => {
     console.log(error);
     res.status(400).send({
       message: "Error in product count",
+      error,
+      success: false,
+    });
+  }
+};
+
+// product review
+export const productReview = async (req, res) => {
+  try {
+    let body = req.body;
+    const review = await new reviewModel(body).save();
+    res.status(200).send({
+      success: true,
+      message: "Product Review Added Successfully",
+      review,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      message: "Error in review adding",
+      error,
+      success: false,
+    });
+  }
+};
+
+// get product review
+export const getProductReview = async (req, res) => {
+  try {
+    const reviews = await reviewModel
+      .find({ productId: req.params.id })
+      .populate("userId");
+
+    res.status(200).send({
+      success: true,
+      message: "Product Review Get Successfully",
+      reviews,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      message: "Error in review getting",
       error,
       success: false,
     });
