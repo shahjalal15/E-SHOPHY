@@ -10,7 +10,7 @@ import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
 //import MessengerCustomerChat from "react-messenger-customer-chat";
 
-const HomePage = () => {
+const HomePage = ({}) => {
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);

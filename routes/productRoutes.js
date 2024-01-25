@@ -5,12 +5,14 @@ import {
   createProductController,
   deleteProductController,
   getProductController,
+  getProductReview,
   getSingleProductController,
   productCategoryController,
   productCountController,
   productFiltersController,
   productListController,
   productPhotoController,
+  productReview,
   realtedProductController,
   searchProductController,
   updateProductController,
@@ -75,5 +77,11 @@ router.get("/braintree/token", braintreeTokenController);
 router.post("/braintree/payment", requireSignIn, brainTreePaymentController);
 
 /*router.put("/review", requireSignIn, createProductReviewController);*/
+
+//product reviw add
+router.post("/product-review", productReview);
+
+//product reviw get
+router.get("/product-review-get/:id", getProductReview);
 
 export default router;
